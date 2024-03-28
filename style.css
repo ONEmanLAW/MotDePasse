@@ -1,0 +1,71 @@
+body {
+  background-image: url('assets/fondLumRouge.png');
+  background-repeat: no-repeat; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.lock {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  text-align: center;
+}
+
+.addButtons img,
+.takeOffButtons img {
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 60px; 
+  height: 60px;
+  cursor: pointer;
+}
+
+.takeOffButtons img {
+  margin-top: 4px;
+}
+
+#checkBtn {
+  cursor: pointer;
+  height: 85px;
+  width: 85px;
+  margin-top: 10px;
+  position: absolute;
+  top: 300px;
+  left: 210px;
+}
+
+.displayImage {
+  width: 60px;
+  height: 120px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.result-cell {
+  position: relative;
+}
+
+.result-cell img {
+  width: 100%;
+  height: auto;
+}
+
+.result-cell span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+}
+
+.other-cell {
+  background-color: red;
+}
+
