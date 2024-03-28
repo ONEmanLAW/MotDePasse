@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const checkBtn = document.getElementById('checkBtn');
   const resultDisplay = document.getElementById('result');
   const clickSound = new Audio('audios/click.wav');
-  const ledSound = new Audio('audios/ledOn.wav')
+  const ledSound = new Audio('audios/ledOn.wav');
 
  
   let code = '64385';
