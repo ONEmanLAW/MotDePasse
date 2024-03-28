@@ -6,13 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
   const resultDisplay = document.getElementById('result');
   const clickSound = new Audio('audios/click.wav');
   const ledSound = new Audio('audios/ledOn.wav');
+  const errorSound = new Audio('audios/error.wav');
 
  
   let code = '64385';
   let currentCode = '00000'; 
   let isProcessing = false; 
 
-  // Chemins des images pour chaque chiffre
+  
   const imagePaths = [
     'assets/0.png',
     'assets/1.png',
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     'assets/9.png',
   ];
 
+
   // Fonction pour mettre à jour l'affichage du code
   function updateDisplay() {
     for (let i = 0; i < currentCode.length; i++) {
@@ -33,6 +35,24 @@ document.addEventListener("DOMContentLoaded", function() {
       displayImages[i].alt = currentCode[i];
     }
   };
+
+
+  // Fonctions pour jouer le son
+  function playClickSound() {
+    clickSound.currentTime = 0; 
+    clickSound.play();
+  };
+  
+  function ledOnClickSound () {
+    ledSound.currentTime = 0;
+    ledSound.play(); 
+  };
+
+  function errorOnClickSound () {
+    errorSound.currentTime = 0;
+    errorSound.play(); 
+  };
+
 
   // Fonction pour changer l'image avec une temporisation
   function changeImageWithDelay(imgElement, newSrc, delay) {
@@ -42,18 +62,6 @@ document.addEventListener("DOMContentLoaded", function() {
       imgElement.src = originalSrc;
       isProcessing = false;
     }, delay);
-  };
-
-
-  // Fonction pour jouer le son
-  function playClickSound() {
-    clickSound.currentTime = 0; 
-    clickSound.play();
-  };
-  
-  function ledOnClickSound () {
-    ledSound.currentTime = 0;
-    ledSound.play(); 
   };
 
 
@@ -72,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+
   // Gestion de l'événement pour les boutons "Soustraire"
   takeOffButtons.forEach((button, index) => {
     button.addEventListener('click', function() {
@@ -87,15 +96,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  
   // Gestionnaire d'événement pour le bouton "Vérifier"
   checkBtn.addEventListener('click', function() {
     if (!isProcessing) {
       isProcessing = true;
       if (currentCode === code) {
-        document.body.style.backgroundImage = "url('assets/fondLumVert.png')";
+        document.querySelector('.ledRouge').src = 'assets/ledVerte.png';
         ledOnClickSound();
       } else {
-        // Il ne ce passe rien.
+        errorOnClickSound();
       }
       changeImageWithDelay(this, 'assets/boutonOn.png', 100);
     }
